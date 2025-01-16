@@ -1,0 +1,14 @@
+name: aw-scraper
+version: 0.1.0
+
+authors:
+  - Derek McDaniel <dmcdaniel12@gmail.com>
+
+description: |
+  Scrapes a page, grabs the id and price and inserts into a database
+
+dependencies:
+  db:
+    github: crystal-lang/crystal-db
+  sqlite3:
+    github: crystal-lang/crystal-sqlite3
