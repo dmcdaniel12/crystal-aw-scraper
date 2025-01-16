@@ -6,6 +6,20 @@ class Database
 
   def initialize
     @db = DB.open("sqlite3://./products.db")
+    create_products_table_if_not_exists
+  end
+
+  def create_products_table_if_not_exists
+    query = <<-SQL
+      CREATE TABLE IF NOT EXISTS products (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        data_asin TEXT NOT NULL,
+        product_name TEXT NOT NULL,
+        price TEXT NOT NULL
+      )
+    SQL
+    @db.exec(query)
+    puts "Ensured products table exists."
   end
 
   def insert_product(data_asin : String, product_name : String, price : String)
